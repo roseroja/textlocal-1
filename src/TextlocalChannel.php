@@ -34,7 +34,7 @@ class TextlocalChannel
             return;
         }
 
-        if (!is_array($numbers)) {
+        if (! is_array($numbers)) {
             $numbers = [$numbers];
         }
 

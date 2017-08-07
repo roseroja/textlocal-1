@@ -61,7 +61,7 @@ class Textlocal
      */
     private function _sendRequest($command, $params = [])
     {
-        if ($this->apiKey && !empty($this->apiKey)) {
+        if ($this->apiKey && ! empty($this->apiKey)) {
             $params['apiKey'] = $this->apiKey;
         } else {
             $params['hash'] = $this->hash;
@@ -174,7 +174,7 @@ class Textlocal
      */
     public function sendSms($numbers, $message, $sender, $sched = null, $test = false, $receiptURL = null, $custom = null, $optouts = false, $simpleReplyService = false)
     {
-        if (!is_array($numbers)) {
+        if (! is_array($numbers)) {
             throw new Exception('Invalid $numbers format. Must be an array');
         }
         if (empty($message)) {
@@ -183,7 +183,7 @@ class Textlocal
         if (empty($sender)) {
             throw new Exception('Empty sender name');
         }
-        if (!is_null($sched) && !is_numeric($sched)) {
+        if (! is_null($sched) && ! is_numeric($sched)) {
             throw new Exception('Invalid date format. Use numeric epoch format');
         }
 
@@ -220,7 +220,7 @@ class Textlocal
      */
     public function sendSmsGroup($groupId, $message, $sender = null, $sched = null, $test = false, $receiptURL = null, $custom = null, $optouts = false, $simpleReplyService = false)
     {
-        if (!is_numeric($groupId)) {
+        if (! is_numeric($groupId)) {
             throw new Exception('Invalid $groupId format. Must be a numeric group ID');
         }
         if (empty($message)) {
@@ -229,7 +229,7 @@ class Textlocal
         if (empty($sender)) {
             throw new Exception('Empty sender name');
         }
-        if (!is_null($sched) && !is_numeric($sched)) {
+        if (! is_null($sched) && ! is_numeric($sched)) {
             throw new Exception('Invalid date format. Use numeric epoch format');
         }
 
@@ -264,7 +264,7 @@ class Textlocal
      */
     public function sendMms($numbers, $fileSource, $message, $sched = null, $test = false, $optouts = false)
     {
-        if (!is_array($numbers)) {
+        if (! is_array($numbers)) {
             throw new Exception('Invalid $numbers format. Must be an array');
         }
         if (empty($message)) {
@@ -273,7 +273,7 @@ class Textlocal
         if (empty($fileSource)) {
             throw new Exception('Empty file source');
         }
-        if (!is_null($sched) && !is_numeric($sched)) {
+        if (! is_null($sched) && ! is_numeric($sched)) {
             throw new Exception('Invalid date format. Use numeric epoch format');
         }
 
@@ -313,7 +313,7 @@ class Textlocal
      */
     public function sendMmsGroup($groupId, $fileSource, $message, $sched = null, $test = false, $optouts = false)
     {
-        if (!is_numeric($groupId)) {
+        if (! is_numeric($groupId)) {
             throw new Exception('Invalid $groupId format. Must be a numeric group ID');
         }
         if (empty($message)) {
@@ -322,7 +322,7 @@ class Textlocal
         if (empty($fileSource)) {
             throw new Exception('Empty file source');
         }
-        if (!is_null($sched) && !is_numeric($sched)) {
+        if (! is_null($sched) && ! is_numeric($sched)) {
             throw new Exception('Invalid date format. Use numeric epoch format');
         }
 
@@ -368,10 +368,10 @@ class Textlocal
      **/
     public function transferCredits($user, $credits)
     {
-        if (!is_numeric($credits)) {
+        if (! is_numeric($credits)) {
             throw new Exception('Invalid credits format');
         }
-        if (!is_numeric($user)) {
+        if (! is_numeric($user)) {
             throw new Exception('Invalid user');
         }
         if (empty($user)) {
@@ -443,13 +443,13 @@ class Textlocal
      */
     public function getContacts($groupId, $limit, $startPos = 0)
     {
-        if (!is_numeric($groupId)) {
+        if (! is_numeric($groupId)) {
             throw new Exception('Invalid $groupId format. Must be a numeric group ID');
         }
-        if (!is_numeric($startPos) || $startPos < 0) {
+        if (! is_numeric($startPos) || $startPos < 0) {
             throw new Exception('Invalid $startPos format. Must be a numeric start position, 0 or above');
         }
-        if (!is_numeric($limit) || $limit < 1) {
+        if (! is_numeric($limit) || $limit < 1) {
             throw new Exception('Invalid $limit format. Must be a numeric limit value, 1 or above');
         }
 
@@ -581,7 +581,7 @@ class Textlocal
      */
     public function getMessages($inbox)
     {
-        if (!isset($inbox)) {
+        if (! isset($inbox)) {
             return false;
         }
         $options = ['inbox_id' => $inbox];
@@ -598,7 +598,7 @@ class Textlocal
      */
     public function cancelScheduledMessage($id)
     {
-        if (!isset($id)) {
+        if (! isset($id)) {
             return false;
         }
         $options = ['sent_id' => $id];
@@ -626,7 +626,7 @@ class Textlocal
      */
     public function deleteContact($number, $groupid = 5)
     {
-        if (!isset($number)) {
+        if (! isset($number)) {
             return false;
         }
         $options = ['number' => $number, 'group_id' => $groupid];
@@ -721,7 +721,7 @@ class Textlocal
      */
     private function getHistory($type, $start, $limit, $min_time, $max_time)
     {
-        if (!isset($start) || !isset($limit) || !isset($min_time) || !isset($max_time)) {
+        if (! isset($start) || ! isset($limit) || ! isset($min_time) || ! isset($max_time)) {
             return false;
         }
         $options = ['start' => $start, 'limit' => $limit, 'min_time' => $min_time, 'max_time' => $max_time];
@@ -810,7 +810,7 @@ class Contact
  * If the json_encode function does not exist, then create it..
  */
 
-if (!function_exists('json_encode')) {
+if (! function_exists('json_encode')) {
     function json_encode($a = false)
     {
         if (is_null($a)) {
